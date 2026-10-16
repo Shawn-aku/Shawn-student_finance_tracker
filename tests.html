@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Validator tests</title>
+</head>
+<body>
+  <h1>Validator tests</h1>
+  <ul id="results"></ul>
+  <script type="module">
+    import { checkDescription, checkAmount, checkDate, checkCategory, checkCurrency } from './scripts/validators.js';
+
+    const list = document.getElementById('results');
+
+    // each test: a name, the check function, the input, and whether it should pass
+    const tests = [
+      ['description ok', checkDescription, 'Lunch at cafeteria', true],
+      ['description leading space', checkDescription, ' Lunch', false],
+      ['description trailing space', checkDescription, 'Lunch ', false],
+      ['description empty', checkDescription, '', false],
+      ['description repeated word', checkDescription, 'Lunch at the the cafeteria', false],
+      ['amount whole number', checkAmount, '12', true],
+      ['amount two decimals', checkAmount, '12.50', true],
+      ['amount zero', checkAmount, '0', true],
+      ['amount three decimals', checkAmount, '12.505', false],
+      ['amount leading zero', checkAmount, '012', false],
+      ['amount negative', checkAmount, '-5', false],
+      ['date ok', checkDate, '2025-09-29', true],
+      ['date month 13', checkDate, '2025-13-01', false],
+      ['date wrong format', checkDate, '29-09-2025', false],
+      ['category ok', checkCategory, 'Food', true],
+      ['category with hyphen', checkCategory, 'Eating-out', true],
+      ['category with number', checkCategory, 'Food2', false],
+      ['category double space', checkCategory, 'Fast  food', false],
+      ['currency ok', checkCurrency, 'USD', true],
+      ['currency lowercase', checkCurrency, 'usd', false]
+    ];
+
+    for (const [name, check, input, shouldPass] of tests) {
+      const passed = (check(input) === '') === shouldPass;
+      const item = document.createElement('li');
+      item.textContent = (passed ? 'PASS: ' : 'FAIL: ') + name;
+      list.appendChild(item);
+    }
+  </script>
+</body>
+</html>

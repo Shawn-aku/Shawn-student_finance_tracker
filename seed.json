@@ -1,0 +1,13 @@
+[
+  { "id": "rec_0001", "description": "Lunch at cafeteria", "amount": 12.5, "category": "Food", "date": "2025-09-29", "createdAt": "2025-09-29T12:30:00.000Z", "updatedAt": "2025-09-29T12:30:00.000Z" },
+  { "id": "rec_0002", "description": "Coffee and tea for study group", "amount": 8.75, "category": "Food", "date": "2025-09-28", "createdAt": "2025-09-28T09:00:00.000Z", "updatedAt": "2025-09-28T09:00:00.000Z" },
+  { "id": "rec_0003", "description": "Calculus textbook", "amount": 89.99, "category": "Books", "date": "2025-09-01", "createdAt": "2025-09-01T10:00:00.000Z", "updatedAt": "2025-09-01T10:00:00.000Z" },
+  { "id": "rec_0004", "description": "Bus pass for the month", "amount": 45, "category": "Transport", "date": "2025-10-01", "createdAt": "2025-10-01T08:00:00.000Z", "updatedAt": "2025-10-01T08:00:00.000Z" },
+  { "id": "rec_0005", "description": "Movie night with friends", "amount": 15.2, "category": "Entertainment", "date": "2024-02-29", "createdAt": "2024-02-29T20:00:00.000Z", "updatedAt": "2024-02-29T20:00:00.000Z" },
+  { "id": "rec_0006", "description": "Tuition fee payment", "amount": 99999.99, "category": "Fees", "date": "2025-01-01", "createdAt": "2025-01-01T07:00:00.000Z", "updatedAt": "2025-01-01T07:00:00.000Z" },
+  { "id": "rec_0007", "description": "Found a coin", "amount": 0.01, "category": "Other", "date": "2025-12-31", "createdAt": "2025-12-31T23:59:00.000Z", "updatedAt": "2025-12-31T23:59:00.000Z" },
+  { "id": "rec_0008", "description": "Pizza (large) & drinks", "amount": 22, "category": "Food", "date": "2025-09-15", "createdAt": "2025-09-15T19:00:00.000Z", "updatedAt": "2025-09-15T19:00:00.000Z" },
+  { "id": "rec_0009", "description": "Lab fee - chemistry", "amount": 30.4, "category": "Fees", "date": "2025-09-10", "createdAt": "2025-09-10T11:00:00.000Z", "updatedAt": "2025-09-10T11:00:00.000Z" },
+  { "id": "rec_0010", "description": "Taxi home from library", "amount": 6.3, "category": "Transport", "date": "2025-09-20", "createdAt": "2025-09-20T22:00:00.000Z", "updatedAt": "2025-09-20T22:00:00.000Z" },
+  { "id": "rec_0011", "description": "Notebook set", "amount": 0, "category": "Books", "date": "2025-09-05", "createdAt": "2025-09-05T14:00:00.000Z", "updatedAt": "2025-09-05T14:00:00.000Z" }
+]

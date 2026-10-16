@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Student Finance Tracker</title>
+        <link rel="stylesheet" href="styles/main.css">
+    </head>
+    <body>
+        <a href="#main" class="skip-link">Skip to content</a>
+
+        <header>
+            <h1>Student Finance Tracker</h1>
+            <nav aria-label="Main menu">
+                <button type="button" data-page="about">About</button>
+                <button type="button" data-page="dashboard">Dashboard</button>
+                <button type="button" data-page="records">Records</button>
+                <button type="button" data-page="add">Add record</button>
+                <button type="button" data-page="settings">Settings</button>
+            </nav>
+        </header>
+
+        <main id="main" tabindex="-1">
+
+            <section id="about" class="page">
+                <h2>About</h2>
+                <p>This app helps a student keep track of spending. You can add transaction, search them with regex and see how much of your budget is left.
+                <p>Github: <a href="https://github.com/Shawn-aku">github.com/Shawn-aku</a></p>
+                <p>Email: s.bamigboye@alustudent.com</p>
+            </section>
+
+            <section id="dashboard" class="page" hidden>
+                <h2>Dashboards</h2>
+                <ul class="stats">
+                    <li>Total records: <strong id="stat-count">0</strong></li>
+                    <li>Total spent: <strong id="stat-total">0</strong></li>
+                    <li>Top category: <strong id="stat-top">none</strong></li>
+                </ul>
+                 <p id="cap-message" aria-live="polite"></p>
+      <h3>Last 7 days</h3>
+      <ul id="trend-list" class="trend"></ul>
+            </section>
+            <section id="records" class="page" hidden>
+                <h2>Records</h2>
+                <div class="toolbar">
+                    <div class="field">
+                        <label for="search-text">Search with a regex pattern</label>
+                        <input type="text" id="search-text" placeholder="for example: tea">
+                    </div>
+                    <div class="field">
+                        <label><input type="checkbox" id="search-case"> Ignore upper/lower case</label>
+                    </div>
+                    <div class="field">
+                        <label for="sort-by">Sort by</label>
+                        <select id="sort-by">
+                            <option value="date-new">Date (newest first)</option>
+                            <option value="date-old">Date (oldest first)</option>
+                            <option value="desc-az">Description (A to Z)</option>
+                            <option value="desc-za">Description (Z to A)</option>
+                            <option value="amount-low">Amount (low to high)</option>
+                            <option value="amount-high">Amount (high to low)</option>
+                        </select>
+                        
+                    </div>
+                 </div>
+                 <p id="search-error" class="error" role="alert"></p>
+                 <p id="search-status" role="status"></p>
+
+                 <table>
+                    <thead>
+                        <tr>
+                            <th scope="col">Date</th>
+                            <th scope="col">Description</th>
+                            <th scope="col">Amount</th>
+                            <th scope="col">Category</th>
+                            <th scope="col">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="records-body"></tbody>
+                 </table>
+                
+            </section>
+            <section id="add" class="page" hidden>
+                 <h2 id="form-title">Add record</h2>
+      <form id="record-form" novalidate>
+        <div class="field">
+          <label for="description">Description</label>
+          <input type="text" id="description" name="description" aria-describedby="description-error">
+          <span id="description-error" class="error"></span>
+        </div>
+        <div class="field">
+          <label for="amount">Amount</label>
+          <input type="text" id="amount" name="amount" inputmode="decimal" aria-describedby="amount-error">
+          <span id="amount-error" class="error"></span>
+        </div>
+        <div class="field">
+          <label for="category">Category</label>
+          <input type="text" id="category" name="category" list="category-list" aria-describedby="category-error">
+          <datalist id="category-list">
+            <option value="Food"></option>
+            <option value="Books"></option>
+            <option value="Transport"></option>
+            <option value="Entertainment"></option>
+            <option value="Fees"></option>
+            <option value="Other"></option>
+          </datalist>
+          <span id="category-error" class="error"></span>
+        </div>
+        <div class="field">
+          <label for="date">Date (YYYY-MM-DD)</label>
+          <input type="text" id="date" name="date" aria-describedby="date-error">
+          <span id="date-error" class="error"></span>
+        </div>
+        <button type="submit" id="save-btn">Add record</button>
+        <button type="button" id="cancel-btn" hidden>Cancel edit</button>
+        <p id="form-status" role="status"></p>
+      </form>
+            </section>
+
+            <section id="settings" class="page" hidden>
+                <h2>Settings</h2>
+                <form id="settings-form" novalidate>
+                    <div class="field">
+                        <label for="set-base">Base currency (3 capital letters)</label>
+                        <input type="text" id="set-base">
+                    </div>
+                    <div class="field">
+                        <label for="set-cur2">Second currency</label>
+                        <input type="text" id="set-cur2">
+                    </div>
+                    <div class="field">
+                        <label for="set-rate2">Rate: 1 base = how many of the second currency</label>
+                        <input type="text" id="set-rate2">
+                    </div>
+                    <div class="field">
+                        <label for="set-cur3">Third currency</label>
+                        <input type="text" id="set-cur3">
+                    </div>
+                    <div class="field">
+                        <label for="set-rate3">Rate: 1 base = how many of the third currency</label>
+                        <input type="text" id="set-rate3">
+                    </div>
+                    <div class="field">
+                        <label for="set-cap">Spending cap</label>
+                        <input type="text" id="set-cap">
+                    </div>
+                    <button type="submit">Save settings</button>
+
+                </form>
+
+                <h3>Data</h3>
+                <button type="button" id="export-btn">Export JSON</button>
+                <button type="button" id="sample-btn">Load sample data</button>
+                <div class="field">
+                    <label for="import-file">Import JSON file</label>
+                    <input type="file" id="import-file" accept=".json,application/json">
+                </div>
+                <p id="settings-status" role="status"></p>
+            </section>
+        </main>
+        <footer>
+            <p>Student Finance Tracker</p>
+        </footer>
+        <script type="module" src="scripts/app.js"></script>
+    </body>
+</html>
