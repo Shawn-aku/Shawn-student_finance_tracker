@@ -3,7 +3,7 @@
 
 A simple app to track student spending. Built with plain HTML, CSS and JavaScript.
 
-- Live site: PUT YOUR GITHUB PAGES LINK HERE
+- Live site:  https://shawn-aku.github.io/Shawn-student_finance_tracker/
 - Demo video: PUT YOUR VIDEO LINK HERE
 - Contact: github.com/Shawn-aku, s.bamigboye@alustudent.com
 
